@@ -28,3 +28,76 @@ h1 {
   background-color: #c7c7e4;
   text-decoration: none;
 }
+
+.loading {
+  z-index: 100;
+  background-color: rgba(255, 255, 255, 0.9);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding-top: 30%;
+}
+
+.loading-text {
+  font-size: 35px;
+  vertical-align: middle;
+}
+
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
+}
+
+.scroll {
+    height: 300px;
+}
+table {
+    max-width: 900px;
+    text-align: left;
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+    width: 100%;
+    margin-bottom: 50px;
+    margin-right: auto;
+    margin-left: auto;
+    border: 2px solid black;
+}
+table thead {
+    /* head takes the height it requires,
+    and it's not scaled when table is resized */
+    flex: 0 0 auto;
+    width: calc(100% - 0.9em);
+}
+table tbody {
+    /* body takes all the remaining available space */
+    flex: 1 1 auto;
+    display: block;
+    overflow-y: scroll;
+    cursor: pointer;
+}
+table tbody tr {
+    width: 100%;
+}
+table> tbody> tr:hover {
+    background-color: #aaa;
+    color: white;
+}
+table thead, table tbody tr {
+    display: table;
+    table-layout: fixed;
+}
+thead > tr > th {
+  background-color: #ccc;
+  border: 1px solid #ccc;
+}
+tbody > tr > td {
+  padding: 5px 0px;
+}
+tr:nth-child(even) {
+    background-color: #eee;
+}
+tr:nth-child(odd) {
+    background-color: #ddd;
+}

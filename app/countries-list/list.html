@@ -1,1 +1,27 @@
+<div class="list-countries" ng-controller="ListCtrl as vm">
+  <table class="scroll">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Code</th>
+        <th>Capital</th>
+        <th>Area in km2</th>
+        <th>Population</th>
+        <th>Continent</th>
+      </tr>
+    <thead>
+    <tbody>
+      <tr onclick="window.document.location='/#!/list';" ng-repeat="c in vm.allCities">
+        <td>{{ c.countryName }}</td>
+        <td>{{ c.countryCode }}</td>
+        <td>{{ c.capital }}</td>
+        <td>{{ c.areaInSqKm | number }}</td>
+        <td>{{ c.population | number }}</td>
+        <td>{{ c.continentName }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
 <a class="link-button" href="#!/">Home</a>

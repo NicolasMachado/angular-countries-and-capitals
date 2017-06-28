@@ -8,9 +8,14 @@
 <title>Countries and Capitals app</title>
 </head>
 
-<body class="owm-body">
+<body class="cac-body" ng-controller="MainCtrl as vm">
   <h1>Countries and Capitals</h1>
   <div class="" ng-view></div>
+  <div class="loading" ng-if="$root.loading" ng-cloak>
+    <div class="loading-text">
+      Loading...
+    </div>
+  </div>
 
 <!-- build:js ./_assets/combined.js -->
 <script src="./bower_components/angular/angular.js"></script>

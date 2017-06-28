@@ -6,4 +6,9 @@ angular.module('cacApp', ['cacViews', 'ngRoute', 'ngAnimate'])
     $routeProvider.otherwise({
       redirectTo : '/'
     });
+  })
+  .controller('MainCtrl', function($rootScope) {
+    $rootScope.loading = false;
+  })
+  .controller('HomeCtrl', function($rootScope) {
   });
