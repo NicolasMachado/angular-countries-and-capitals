@@ -3,12 +3,10 @@ angular.module('cacApp', ['cacViews', 'ngRoute', 'ngAnimate'])
     $httpProvider.defaults.useXDomain = true;
     delete $httpProvider.defaults.headers.common['X-Requested-With'];
     $locationProvider.hashPrefix('!');
-    /*$routeProvider.otherwise({
+    $routeProvider.otherwise({
       redirectTo : '/'
-    });*/
+    });
   })
   .controller('MainCtrl', function($rootScope) {
     $rootScope.loading = false;
   })
-  .controller('HomeCtrl', function($rootScope) {
-  });

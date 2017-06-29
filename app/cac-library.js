@@ -5,29 +5,32 @@ angular.module('cacLibrary', [])
 
   .factory('listRequest', ['$http', '$q', 'CAC_LIST_URL', function($http, $q, CAC_LIST_URL){
     var bigList = [];
-    return function(){
-      params = {
+    var params = {
         type: 'JSON',
         nojsoncallback: 1
       }
-      var reqParams = angular.extend({}, params);
-      return $http.get(CAC_LIST_URL, {params: reqParams})
-        .then(function(response){
-          bigList = response.data.geonames;
-          return $q.when(response.data);
-        });
-    };
+    return {
+      getAllCountries: function() {
+        return $http.get(CAC_LIST_URL, {params: params})
+          .then(function(response){
+            bigList = response.data.geonames;
+          })
+      },
+      returnAllCountries: function() {
+        return bigList;
+      }
+    }
   }])
 
   .factory('cityRequest', ['$http', '$q', 'CAC_INDIV_URL', function($http, $q, CAC_INDIV_URL){
-    return function(params){
+    return function(capital, countryCode) {
       params = {
         type: 'JSON',
         nojsoncallback: 1,
-        q: 'Paris'
+        q: capital,
+        countryCode
       }
-      var reqParams = angular.extend({}, params);
-      return $http.get(CAC_INDIV_URL, {params: reqParams})
+      return $http.get(CAC_INDIV_URL, {params: params})
         .then(function(response){
           return $q.when(response.data);
         });
