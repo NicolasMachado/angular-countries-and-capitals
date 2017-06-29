@@ -4,10 +4,3 @@ viewsModule.config(['$routeProvider', function($routeProvider) {
     controller : 'HomeCtrl'
   });
 }]);
-/*
-viewsModule.controller('HomeCtrl', ['$scope', 'owmUSCities', function($scope, owmUSCities) {
-  owmUSCities()
-    .then(function(citiesXhr) {
-      $scope.cities = citiesXhr;
-    });
-}]);*/

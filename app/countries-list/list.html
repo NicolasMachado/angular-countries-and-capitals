@@ -11,7 +11,7 @@
       </tr>
     <thead>
     <tbody>
-      <tr onclick="window.document.location='/#!/list';" ng-repeat="c in vm.allCities">
+      <tr ng-repeat="c in vm.allCities" ng-click="vm.goToCity(c.countryCode)">
         <td>{{ c.countryName }}</td>
         <td>{{ c.countryCode }}</td>
         <td>{{ c.capital }}</td>

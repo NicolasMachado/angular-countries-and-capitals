@@ -7,12 +7,16 @@ viewsModule.config(['$routeProvider', function($routeProvider) {
 
 viewsModule.controller('ListCtrl', ['$scope', '$rootScope', '$location', '$q', 'listRequest',
   function($scope, $rootScope, $location, $q, listRequest) {
-    var vm = this;
+    const vm = this;
     $rootScope.loading = true;
+    console.log(listRequest)
     listRequest()
       .then (function(result) {
         $rootScope.loading = false;
         vm.allCities = result.geonames;
-        console.log(vm.allCities);
       })
+
+    vm.goToCity = function (cityCode) {
+      $location.path('/city/' + cityCode);
+    }
 }]);
