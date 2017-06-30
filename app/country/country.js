@@ -1,6 +1,6 @@
 viewsModule.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when("/city/:code", {
-    templateUrl : "./city/city.html"
+  $routeProvider.when("/country/:code", {
+    templateUrl : "./country/country.html"
   });
 }]);
 
@@ -26,7 +26,6 @@ viewsModule.controller('CityCtrl', ['$scope', '$rootScope', '$location', '$q', '
       for (var i = 0; i<allCountries.length; i++) {
         if (allCountries[i].countryCode === code) {
           vm.country = allCountries[i];
-          console.log(vm.country)
         }
       }
       getCapitalDetails(vm.country.capital, vm.country.countryCode);
@@ -40,7 +39,7 @@ viewsModule.controller('CityCtrl', ['$scope', '$rootScope', '$location', '$q', '
         .then (function() {
           neighborsRequest(vm.country.geonameId)
           .then (function(result) {
-            vm.neighbours = result.geonames.slice(0, 3);
+            vm.neighbours = result.geonames ? result.geonames.slice(0, 3) : [];
             $rootScope.loading = false;
           })
         });

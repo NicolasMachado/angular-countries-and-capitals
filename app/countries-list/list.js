@@ -20,6 +20,6 @@ viewsModule.controller('ListCtrl', ['$scope', '$rootScope', '$location', '$q', '
     }
 
     vm.goToCity = function (cityCode) {
-      $location.path('/city/' + cityCode);
+      $location.path('/country/' + cityCode);
     }
 }]);

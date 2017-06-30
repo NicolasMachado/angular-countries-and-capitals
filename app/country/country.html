@@ -14,9 +14,13 @@
       {{ vm.country.capital }}<br />
       {{ vm.capital.population | number }}<br />
       <div ng-repeat="n in vm.neighbours" class="neigh-cont">
-        <a ng-href="#!/city/{{ n.countryCode }}">{{ n.countryName }}</a>
+        <a ng-href="#!/country/{{ n.countryCode }}">{{ n.countryName }}</a>
       </div>
     </div>
+  </div>
+  <div class="ctr-img-cont">
+    <img class="country-img" ng-src="http://www.geonames.org/flags/x/{{ vm.country.countryCode | lowercase }}.gif" />
+    <img class="country-img" ng-src="http://www.geonames.org/img/country/250/{{ vm.country.countryCode | uppercase }}.png" />
   </div>
 <a class="link-button" href="#!/">Home</a>
 <a class="link-button" href="#!/list">Back to list</a>
