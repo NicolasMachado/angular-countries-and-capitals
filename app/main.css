@@ -1,5 +1,7 @@
 html {
   font-family: sans-serif;
+  box-sizing: border-box;
+  line-height: 1.5em;
 }
 
 body {
@@ -11,6 +13,11 @@ h1 {
   border-bottom: 1px solid black;
   margin: 0 0 30px 0;
   padding: 30px 0;
+  background-color: #eee;
+}
+
+h2 {
+  font-size: 2em;
 }
 
 .intro-text {
@@ -100,4 +107,21 @@ tr:nth-child(even) {
 }
 tr:nth-child(odd) {
     background-color: #ddd;
+}
+
+.ctr-right {
+  padding: 5px;
+  margin: 50px 0;
+  display: inline-block;
+  width: 40%;
+  text-align: left;
+  vertical-align: top;
+}
+.ctr-left {
+  padding: 5px;
+  margin: 50px 0;
+  display: inline-block;
+  width: 40%;
+  text-align: right;
+  vertical-align: top;
 }

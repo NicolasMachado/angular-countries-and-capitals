@@ -1,3 +1,22 @@
 <div class="" ng-controller="CityCtrl as vm">
-  {{ vm.name }}
-</div>
+  <h2>{{ vm.country.countryName }}</h2>
+  <div>
+    <div class="ctr-left">
+      Population:<br />
+      Area:<br />
+      Capital:<br />
+      Pop of Capital:<br />
+      3 Neighbors:<br />
+    </div>
+    <div class="ctr-right">
+      {{ vm.country.population | number }}<br />
+      {{ vm.country.areaInSqKm | number }} km²<br />
+      {{ vm.country.capital }}<br />
+      {{ vm.capital.population | number }}<br />
+      <div ng-repeat="n in vm.neighbours" class="neigh-cont">
+        <a ng-href="#!/city/{{ n.countryCode }}">{{ n.countryName }}</a>
+      </div>
+    </div>
+  </div>
+<a class="link-button" href="#!/">Home</a>
+<a class="link-button" href="#!/list">Back to list</a>

@@ -4,11 +4,12 @@ viewsModule.config(['$routeProvider', function($routeProvider) {
   });
 }]);
 
-viewsModule.controller('CityCtrl', ['$scope', '$rootScope', '$location', '$q', 'cityRequest', '$routeParams', 'listRequest',
-  function($scope, $rootScope, $location, $q, cityRequest, routeParams, listRequest) {
+viewsModule.controller('CityCtrl', ['$scope', '$rootScope', '$location', '$q', 'cityRequest', '$routeParams', 'listRequest', 'neighborsRequest',
+  function($scope, $rootScope, $location, $q, cityRequest, routeParams, listRequest, neighborsRequest) {
     const vm = this;
     $rootScope.loading = true;
     vm.country = '';
+    vm.neighbours = [];
 
     let allCountries = listRequest.returnAllCountries();
     if (allCountries.length === 0) {
@@ -25,6 +26,7 @@ viewsModule.controller('CityCtrl', ['$scope', '$rootScope', '$location', '$q', '
       for (var i = 0; i<allCountries.length; i++) {
         if (allCountries[i].countryCode === code) {
           vm.country = allCountries[i];
+          console.log(vm.country)
         }
       }
       getCapitalDetails(vm.country.capital, vm.country.countryCode);
@@ -33,10 +35,14 @@ viewsModule.controller('CityCtrl', ['$scope', '$rootScope', '$location', '$q', '
     function getCapitalDetails(capital, countryCode) {
       cityRequest(capital, countryCode)
         .then (function(result) {
-          $rootScope.loading = false;
           vm.capital = result.geonames[0];
-          vm.name = vm.capital.name;
-          console.log(vm.capital)
         })
+        .then (function() {
+          neighborsRequest(vm.country.geonameId)
+          .then (function(result) {
+            vm.neighbours = result.geonames.slice(0, 3);
+            $rootScope.loading = false;
+          })
+        });
     }
 }]);
